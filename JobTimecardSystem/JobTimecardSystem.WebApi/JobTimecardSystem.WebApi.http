@@ -1,0 +1,6 @@
+@JobTimecardSystem.WebApi_HostAddress = http://localhost:5295
+
+GET {{JobTimecardSystem.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

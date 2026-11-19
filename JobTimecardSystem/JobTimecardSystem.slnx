@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="JobTimecardSystem.Data/JobTimecardSystem.Data.csproj" />
+  <Project Path="JobTimecardSystem.Desktop/JobTimecardSystem.Desktop.csproj" />
+  <Project Path="JobTimecardSystem.Tests/JobTimecardSystem.Tests.csproj" />
+  <Project Path="JobTimecardSystem.WebApi/JobTimecardSystem.WebApi.csproj" />
+</Solution>
