@@ -61,7 +61,7 @@ No external database management tools are required—everything is handled insid
 2. **Viewing or Pre-Creating the Database Inside Visual Studio**:
    - In Visual Studio's top menu bar, open **View -> SQL Server Object Explorer**.
    - Expand **SQL Server -> `(localdb)\MSSQLLocalDB` -> Databases**.
-   - *(Optional)* To create the database manually before running: right-click **Databases** -> **Add New Database**, name it **`JobTimecardDb`**, and click **OK**.
+   - IF THE DATABASE (`JobTimecardDb`) DOES NOT EXIST: right-click **Databases** -> **Add New Database**, name it **`JobTimecardDb`**, and click **OK**.
    - Once the application runs, expand **`JobTimecardDb` -> Tables** inside **SQL Server Object Explorer** to inspect the schema and table data directly inside Visual Studio.
 
 ---
