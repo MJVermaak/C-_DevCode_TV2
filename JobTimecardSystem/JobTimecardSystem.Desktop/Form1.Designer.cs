@@ -30,6 +30,7 @@
         {
             tabControlMain = new TabControl();
             tabJobs = new TabPage();
+            dgvJobs = new DataGridView();
             flpJobButtons = new FlowLayoutPanel();
             btnAddJob = new Button();
             btnUpdateJob = new Button();
@@ -55,8 +56,8 @@
             pnlTelephone = new Panel();
             txtTelephone = new TextBox();
             lblTelephone = new Label();
-            dgvJobs = new DataGridView();
             tabTimecards = new TabPage();
+            dgvTimecards = new DataGridView();
             flpTimecardButtons = new FlowLayoutPanel();
             btnAddTimecard = new Button();
             btnUpdateTimecard = new Button();
@@ -76,9 +77,57 @@
             pnlHoursWorked = new Panel();
             numHoursWorked = new NumericUpDown();
             lblHoursWorked = new Label();
-            dgvTimecards = new DataGridView();
+            tabClients = new TabPage();
+            dgvClients = new DataGridView();
+            flpClientButtons = new FlowLayoutPanel();
+            btnAddClient = new Button();
+            btnUpdateClient = new Button();
+            btnDeleteClient = new Button();
+            btnClearClient = new Button();
+            flpClientsInputs = new FlowLayoutPanel();
+            pnlClientCompany = new Panel();
+            txtClientCompany = new TextBox();
+            lblClientCompany = new Label();
+            pnlClientContact = new Panel();
+            txtClientContact = new TextBox();
+            lblClientContact = new Label();
+            pnlClientPhone = new Panel();
+            txtClientPhone = new TextBox();
+            lblClientPhone = new Label();
+            pnlClientSearch = new Panel();
+            btnSearchClient = new Button();
+            txtSearchClient = new TextBox();
+            lblSearchClient = new Label();
+            tabEmployees = new TabPage();
+            dgvEmployees = new DataGridView();
+            flpEmployeeInputs = new FlowLayoutPanel();
+            pnlEmpCode = new Panel();
+            txtEmpCode = new TextBox();
+            lblEmpCode = new Label();
+            pnlEmpFirstName = new Panel();
+            txtEmpFirstName = new TextBox();
+            lblEmpFirstName = new Label();
+            pnlEmpLastName = new Panel();
+            txtEmpLastName = new TextBox();
+            lblEmpLastName = new Label();
+            pnlEmpRole = new Panel();
+            txtEmpRole = new TextBox();
+            lblEmpRole = new Label();
+            pnlEmpEmail = new Panel();
+            txtEmpEmail = new TextBox();
+            lblEmpEmail = new Label();
+            pnlEmpSearch = new Panel();
+            btnSearchEmployee = new Button();
+            txtSearchEmployee = new TextBox();
+            lblSearchEmployee = new Label();
+            flpEmployeeButtons = new FlowLayoutPanel();
+            btnAddEmployee = new Button();
+            btnUpdateEmployee = new Button();
+            btnDeleteEmployee = new Button();
+            btnClearEmployee = new Button();
             tabControlMain.SuspendLayout();
             tabJobs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvJobs).BeginInit();
             flpJobButtons.SuspendLayout();
             flpJobInputs.SuspendLayout();
             pnlJobNum.SuspendLayout();
@@ -87,8 +136,8 @@
             pnlCompanyName.SuspendLayout();
             pnlContactName.SuspendLayout();
             pnlTelephone.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvJobs).BeginInit();
             tabTimecards.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvTimecards).BeginInit();
             flpTimecardButtons.SuspendLayout();
             flpTimecardInputs.SuspendLayout();
             pnlJobSelect.SuspendLayout();
@@ -96,13 +145,32 @@
             pnlDateWorked.SuspendLayout();
             pnlHoursWorked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numHoursWorked).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvTimecards).BeginInit();
+            tabClients.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
+            flpClientButtons.SuspendLayout();
+            flpClientsInputs.SuspendLayout();
+            pnlClientCompany.SuspendLayout();
+            pnlClientContact.SuspendLayout();
+            pnlClientPhone.SuspendLayout();
+            pnlClientSearch.SuspendLayout();
+            tabEmployees.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
+            flpEmployeeInputs.SuspendLayout();
+            pnlEmpCode.SuspendLayout();
+            pnlEmpFirstName.SuspendLayout();
+            pnlEmpLastName.SuspendLayout();
+            pnlEmpRole.SuspendLayout();
+            pnlEmpEmail.SuspendLayout();
+            pnlEmpSearch.SuspendLayout();
+            flpEmployeeButtons.SuspendLayout();
             SuspendLayout();
             // 
             // tabControlMain
             // 
             tabControlMain.Controls.Add(tabJobs);
             tabControlMain.Controls.Add(tabTimecards);
+            tabControlMain.Controls.Add(tabClients);
+            tabControlMain.Controls.Add(tabEmployees);
             tabControlMain.Dock = DockStyle.Fill;
             tabControlMain.ImeMode = ImeMode.Off;
             tabControlMain.Location = new Point(0, 0);
@@ -123,6 +191,21 @@
             tabJobs.TabIndex = 0;
             tabJobs.Text = "Jobs";
             tabJobs.UseVisualStyleBackColor = true;
+            // 
+            // dgvJobs
+            // 
+            dgvJobs.AllowUserToAddRows = false;
+            dgvJobs.AllowUserToDeleteRows = false;
+            dgvJobs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvJobs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvJobs.Dock = DockStyle.Fill;
+            dgvJobs.Location = new Point(3, 187);
+            dgvJobs.MultiSelect = false;
+            dgvJobs.Name = "dgvJobs";
+            dgvJobs.ReadOnly = true;
+            dgvJobs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvJobs.Size = new Size(970, 423);
+            dgvJobs.TabIndex = 0;
             // 
             // flpJobButtons
             // 
@@ -360,21 +443,6 @@
             lblTelephone.TabIndex = 0;
             lblTelephone.Text = "Telephone";
             // 
-            // dgvJobs
-            // 
-            dgvJobs.AllowUserToAddRows = false;
-            dgvJobs.AllowUserToDeleteRows = false;
-            dgvJobs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvJobs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvJobs.Dock = DockStyle.Fill;
-            dgvJobs.Location = new Point(3, 187);
-            dgvJobs.MultiSelect = false;
-            dgvJobs.Name = "dgvJobs";
-            dgvJobs.ReadOnly = true;
-            dgvJobs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvJobs.Size = new Size(970, 423);
-            dgvJobs.TabIndex = 0;
-            // 
             // tabTimecards
             // 
             tabTimecards.Controls.Add(dgvTimecards);
@@ -387,6 +455,21 @@
             tabTimecards.TabIndex = 1;
             tabTimecards.Text = "Timecards";
             tabTimecards.UseVisualStyleBackColor = true;
+            // 
+            // dgvTimecards
+            // 
+            dgvTimecards.AllowUserToAddRows = false;
+            dgvTimecards.AllowUserToDeleteRows = false;
+            dgvTimecards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTimecards.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTimecards.Dock = DockStyle.Fill;
+            dgvTimecards.Location = new Point(3, 187);
+            dgvTimecards.MultiSelect = false;
+            dgvTimecards.Name = "dgvTimecards";
+            dgvTimecards.ReadOnly = true;
+            dgvTimecards.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTimecards.Size = new Size(970, 423);
+            dgvTimecards.TabIndex = 0;
             // 
             // flpTimecardButtons
             // 
@@ -574,20 +657,493 @@
             lblHoursWorked.TabIndex = 0;
             lblHoursWorked.Text = "Hours Worked:";
             // 
-            // dgvTimecards
+            // tabClients
             // 
-            dgvTimecards.AllowUserToAddRows = false;
-            dgvTimecards.AllowUserToDeleteRows = false;
-            dgvTimecards.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvTimecards.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTimecards.Dock = DockStyle.Fill;
-            dgvTimecards.Location = new Point(3, 187);
-            dgvTimecards.MultiSelect = false;
-            dgvTimecards.Name = "dgvTimecards";
-            dgvTimecards.ReadOnly = true;
-            dgvTimecards.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvTimecards.Size = new Size(970, 423);
-            dgvTimecards.TabIndex = 0;
+            tabClients.Controls.Add(dgvClients);
+            tabClients.Controls.Add(flpClientButtons);
+            tabClients.Controls.Add(flpClientsInputs);
+            tabClients.Location = new Point(4, 24);
+            tabClients.Name = "tabClients";
+            tabClients.Size = new Size(976, 613);
+            tabClients.TabIndex = 2;
+            tabClients.Text = "Clients";
+            tabClients.UseVisualStyleBackColor = true;
+            // 
+            // dgvClients
+            // 
+            dgvClients.AllowUserToAddRows = false;
+            dgvClients.AllowUserToDeleteRows = false;
+            dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClients.Dock = DockStyle.Fill;
+            dgvClients.Location = new Point(0, 120);
+            dgvClients.Name = "dgvClients";
+            dgvClients.ReadOnly = true;
+            dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClients.Size = new Size(976, 493);
+            dgvClients.TabIndex = 0;
+            dgvClients.CellClick += dgvClients_CellClick;
+            // 
+            // flpClientButtons
+            // 
+            flpClientButtons.AutoSize = true;
+            flpClientButtons.Controls.Add(btnAddClient);
+            flpClientButtons.Controls.Add(btnUpdateClient);
+            flpClientButtons.Controls.Add(btnDeleteClient);
+            flpClientButtons.Controls.Add(btnClearClient);
+            flpClientButtons.Dock = DockStyle.Top;
+            flpClientButtons.Location = new Point(0, 74);
+            flpClientButtons.Name = "flpClientButtons";
+            flpClientButtons.Padding = new Padding(10, 0, 10, 10);
+            flpClientButtons.Size = new Size(976, 46);
+            flpClientButtons.TabIndex = 1;
+            // 
+            // btnAddClient
+            // 
+            btnAddClient.Location = new Point(13, 3);
+            btnAddClient.Margin = new Padding(3, 3, 8, 3);
+            btnAddClient.Name = "btnAddClient";
+            btnAddClient.Size = new Size(100, 30);
+            btnAddClient.TabIndex = 0;
+            btnAddClient.Text = "Add Client";
+            btnAddClient.UseVisualStyleBackColor = true;
+            btnAddClient.Click += btnAddClient_Click;
+            // 
+            // btnUpdateClient
+            // 
+            btnUpdateClient.Location = new Point(124, 3);
+            btnUpdateClient.Margin = new Padding(3, 3, 8, 3);
+            btnUpdateClient.Name = "btnUpdateClient";
+            btnUpdateClient.Size = new Size(100, 30);
+            btnUpdateClient.TabIndex = 1;
+            btnUpdateClient.Text = "Update Client";
+            btnUpdateClient.UseVisualStyleBackColor = true;
+            btnUpdateClient.Click += btnUpdateClient_Click;
+            // 
+            // btnDeleteClient
+            // 
+            btnDeleteClient.Location = new Point(235, 3);
+            btnDeleteClient.Margin = new Padding(3, 3, 8, 3);
+            btnDeleteClient.Name = "btnDeleteClient";
+            btnDeleteClient.Size = new Size(100, 30);
+            btnDeleteClient.TabIndex = 2;
+            btnDeleteClient.Text = "Delete Client";
+            btnDeleteClient.UseVisualStyleBackColor = true;
+            btnDeleteClient.Click += btnDeleteClient_Click;
+            // 
+            // btnClearClient
+            // 
+            btnClearClient.Location = new Point(346, 3);
+            btnClearClient.Margin = new Padding(3, 3, 8, 3);
+            btnClearClient.Name = "btnClearClient";
+            btnClearClient.Size = new Size(100, 30);
+            btnClearClient.TabIndex = 3;
+            btnClearClient.Text = "Clear";
+            btnClearClient.UseVisualStyleBackColor = true;
+            btnClearClient.Click += btnClearClient_Click;
+            // 
+            // flpClientsInputs
+            // 
+            flpClientsInputs.AutoSize = true;
+            flpClientsInputs.Controls.Add(pnlClientCompany);
+            flpClientsInputs.Controls.Add(pnlClientContact);
+            flpClientsInputs.Controls.Add(pnlClientPhone);
+            flpClientsInputs.Controls.Add(pnlClientSearch);
+            flpClientsInputs.Dock = DockStyle.Top;
+            flpClientsInputs.Location = new Point(0, 0);
+            flpClientsInputs.Name = "flpClientsInputs";
+            flpClientsInputs.Padding = new Padding(10, 10, 10, 5);
+            flpClientsInputs.Size = new Size(976, 74);
+            flpClientsInputs.TabIndex = 2;
+            // 
+            // pnlClientCompany
+            // 
+            pnlClientCompany.AutoSize = true;
+            pnlClientCompany.Controls.Add(txtClientCompany);
+            pnlClientCompany.Controls.Add(lblClientCompany);
+            pnlClientCompany.Location = new Point(13, 13);
+            pnlClientCompany.Margin = new Padding(3, 3, 12, 6);
+            pnlClientCompany.Name = "pnlClientCompany";
+            pnlClientCompany.Size = new Size(188, 48);
+            pnlClientCompany.TabIndex = 0;
+            // 
+            // txtClientCompany
+            // 
+            txtClientCompany.Location = new Point(0, 22);
+            txtClientCompany.Name = "txtClientCompany";
+            txtClientCompany.Size = new Size(185, 23);
+            txtClientCompany.TabIndex = 1;
+            // 
+            // lblClientCompany
+            // 
+            lblClientCompany.AutoSize = true;
+            lblClientCompany.Location = new Point(0, 3);
+            lblClientCompany.Name = "lblClientCompany";
+            lblClientCompany.Size = new Size(97, 15);
+            lblClientCompany.TabIndex = 0;
+            lblClientCompany.Text = "Company Name:";
+            // 
+            // pnlClientContact
+            // 
+            pnlClientContact.Controls.Add(txtClientContact);
+            pnlClientContact.Controls.Add(lblClientContact);
+            pnlClientContact.Location = new Point(216, 13);
+            pnlClientContact.Margin = new Padding(3, 3, 12, 6);
+            pnlClientContact.Name = "pnlClientContact";
+            pnlClientContact.Size = new Size(170, 50);
+            pnlClientContact.TabIndex = 1;
+            // 
+            // txtClientContact
+            // 
+            txtClientContact.Location = new Point(0, 22);
+            txtClientContact.Name = "txtClientContact";
+            txtClientContact.Size = new Size(165, 23);
+            txtClientContact.TabIndex = 1;
+            // 
+            // lblClientContact
+            // 
+            lblClientContact.AutoSize = true;
+            lblClientContact.Location = new Point(0, 3);
+            lblClientContact.Name = "lblClientContact";
+            lblClientContact.Size = new Size(87, 15);
+            lblClientContact.TabIndex = 0;
+            lblClientContact.Text = "Contact Name:";
+            // 
+            // pnlClientPhone
+            // 
+            pnlClientPhone.Controls.Add(txtClientPhone);
+            pnlClientPhone.Controls.Add(lblClientPhone);
+            pnlClientPhone.Location = new Point(401, 13);
+            pnlClientPhone.Margin = new Padding(3, 3, 12, 6);
+            pnlClientPhone.Name = "pnlClientPhone";
+            pnlClientPhone.Size = new Size(150, 50);
+            pnlClientPhone.TabIndex = 2;
+            // 
+            // txtClientPhone
+            // 
+            txtClientPhone.Location = new Point(0, 22);
+            txtClientPhone.Name = "txtClientPhone";
+            txtClientPhone.Size = new Size(145, 23);
+            txtClientPhone.TabIndex = 1;
+            // 
+            // lblClientPhone
+            // 
+            lblClientPhone.AutoSize = true;
+            lblClientPhone.Location = new Point(0, 3);
+            lblClientPhone.Name = "lblClientPhone";
+            lblClientPhone.Size = new Size(65, 15);
+            lblClientPhone.TabIndex = 0;
+            lblClientPhone.Text = "Telephone:";
+            // 
+            // pnlClientSearch
+            // 
+            pnlClientSearch.Controls.Add(btnSearchClient);
+            pnlClientSearch.Controls.Add(txtSearchClient);
+            pnlClientSearch.Controls.Add(lblSearchClient);
+            pnlClientSearch.Location = new Point(566, 13);
+            pnlClientSearch.Margin = new Padding(3, 3, 12, 6);
+            pnlClientSearch.Name = "pnlClientSearch";
+            pnlClientSearch.Size = new Size(270, 50);
+            pnlClientSearch.TabIndex = 4;
+            // 
+            // btnSearchClient
+            // 
+            btnSearchClient.Location = new Point(186, 21);
+            btnSearchClient.Name = "btnSearchClient";
+            btnSearchClient.Size = new Size(75, 25);
+            btnSearchClient.TabIndex = 2;
+            btnSearchClient.Text = "Search";
+            btnSearchClient.UseVisualStyleBackColor = true;
+            btnSearchClient.Click += btnSearchClient_Click;
+            // 
+            // txtSearchClient
+            // 
+            txtSearchClient.Location = new Point(0, 22);
+            txtSearchClient.Name = "txtSearchClient";
+            txtSearchClient.PlaceholderText = "Type to search...";
+            txtSearchClient.Size = new Size(180, 23);
+            txtSearchClient.TabIndex = 1;
+            txtSearchClient.TextChanged += txtSearchClient_TextChanged;
+            // 
+            // lblSearchClient
+            // 
+            lblSearchClient.AutoSize = true;
+            lblSearchClient.Location = new Point(0, 3);
+            lblSearchClient.Name = "lblSearchClient";
+            lblSearchClient.Size = new Size(84, 15);
+            lblSearchClient.TabIndex = 0;
+            lblSearchClient.Text = "Search Clients:";
+            // 
+            // tabEmployees
+            // 
+            tabEmployees.Controls.Add(dgvEmployees);
+            tabEmployees.Controls.Add(flpEmployeeInputs);
+            tabEmployees.Controls.Add(flpEmployeeButtons);
+            tabEmployees.Location = new Point(4, 24);
+            tabEmployees.Name = "tabEmployees";
+            tabEmployees.Size = new Size(976, 613);
+            tabEmployees.TabIndex = 3;
+            tabEmployees.Text = "Employees";
+            tabEmployees.UseVisualStyleBackColor = true;
+            // 
+            // dgvEmployees
+            // 
+            dgvEmployees.AllowUserToAddRows = false;
+            dgvEmployees.AllowUserToDeleteRows = false;
+            dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmployees.Dock = DockStyle.Fill;
+            dgvEmployees.Location = new Point(0, 178);
+            dgvEmployees.Name = "dgvEmployees";
+            dgvEmployees.ReadOnly = true;
+            dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEmployees.Size = new Size(976, 435);
+            dgvEmployees.TabIndex = 0;
+            dgvEmployees.CellClick += dgvEmployees_CellClick;
+            // 
+            // flpEmployeeInputs
+            // 
+            flpEmployeeInputs.AutoSize = true;
+            flpEmployeeInputs.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flpEmployeeInputs.Controls.Add(pnlEmpCode);
+            flpEmployeeInputs.Controls.Add(pnlEmpFirstName);
+            flpEmployeeInputs.Controls.Add(pnlEmpLastName);
+            flpEmployeeInputs.Controls.Add(pnlEmpRole);
+            flpEmployeeInputs.Controls.Add(pnlEmpEmail);
+            flpEmployeeInputs.Controls.Add(pnlEmpSearch);
+            flpEmployeeInputs.Dock = DockStyle.Top;
+            flpEmployeeInputs.Location = new Point(0, 51);
+            flpEmployeeInputs.Name = "flpEmployeeInputs";
+            flpEmployeeInputs.Padding = new Padding(10, 10, 10, 5);
+            flpEmployeeInputs.Size = new Size(976, 127);
+            flpEmployeeInputs.TabIndex = 2;
+            // 
+            // pnlEmpCode
+            // 
+            pnlEmpCode.Controls.Add(txtEmpCode);
+            pnlEmpCode.Controls.Add(lblEmpCode);
+            pnlEmpCode.Location = new Point(13, 13);
+            pnlEmpCode.Name = "pnlEmpCode";
+            pnlEmpCode.Size = new Size(130, 50);
+            pnlEmpCode.TabIndex = 0;
+            // 
+            // txtEmpCode
+            // 
+            txtEmpCode.Location = new Point(0, 22);
+            txtEmpCode.Name = "txtEmpCode";
+            txtEmpCode.Size = new Size(125, 23);
+            txtEmpCode.TabIndex = 1;
+            // 
+            // lblEmpCode
+            // 
+            lblEmpCode.AutoSize = true;
+            lblEmpCode.Location = new Point(0, 0);
+            lblEmpCode.Margin = new Padding(3, 3, 12, 6);
+            lblEmpCode.Name = "lblEmpCode";
+            lblEmpCode.Size = new Size(93, 15);
+            lblEmpCode.TabIndex = 0;
+            lblEmpCode.Text = "Employee Code:";
+            // 
+            // pnlEmpFirstName
+            // 
+            pnlEmpFirstName.Controls.Add(txtEmpFirstName);
+            pnlEmpFirstName.Controls.Add(lblEmpFirstName);
+            pnlEmpFirstName.Location = new Point(149, 13);
+            pnlEmpFirstName.Name = "pnlEmpFirstName";
+            pnlEmpFirstName.Size = new Size(155, 50);
+            pnlEmpFirstName.TabIndex = 1;
+            // 
+            // txtEmpFirstName
+            // 
+            txtEmpFirstName.Location = new Point(0, 22);
+            txtEmpFirstName.Name = "txtEmpFirstName";
+            txtEmpFirstName.Size = new Size(150, 23);
+            txtEmpFirstName.TabIndex = 1;
+            // 
+            // lblEmpFirstName
+            // 
+            lblEmpFirstName.AutoSize = true;
+            lblEmpFirstName.Location = new Point(0, 0);
+            lblEmpFirstName.Margin = new Padding(3, 3, 12, 6);
+            lblEmpFirstName.Name = "lblEmpFirstName";
+            lblEmpFirstName.Size = new Size(67, 15);
+            lblEmpFirstName.TabIndex = 0;
+            lblEmpFirstName.Text = "First Name:";
+            // 
+            // pnlEmpLastName
+            // 
+            pnlEmpLastName.Controls.Add(txtEmpLastName);
+            pnlEmpLastName.Controls.Add(lblEmpLastName);
+            pnlEmpLastName.Location = new Point(310, 13);
+            pnlEmpLastName.Name = "pnlEmpLastName";
+            pnlEmpLastName.Size = new Size(155, 50);
+            pnlEmpLastName.TabIndex = 2;
+            // 
+            // txtEmpLastName
+            // 
+            txtEmpLastName.Location = new Point(0, 22);
+            txtEmpLastName.Name = "txtEmpLastName";
+            txtEmpLastName.Size = new Size(150, 23);
+            txtEmpLastName.TabIndex = 1;
+            // 
+            // lblEmpLastName
+            // 
+            lblEmpLastName.AutoSize = true;
+            lblEmpLastName.Location = new Point(0, 0);
+            lblEmpLastName.Margin = new Padding(3, 3, 12, 6);
+            lblEmpLastName.Name = "lblEmpLastName";
+            lblEmpLastName.Size = new Size(66, 15);
+            lblEmpLastName.TabIndex = 0;
+            lblEmpLastName.Text = "Last Name:";
+            // 
+            // pnlEmpRole
+            // 
+            pnlEmpRole.Controls.Add(txtEmpRole);
+            pnlEmpRole.Controls.Add(lblEmpRole);
+            pnlEmpRole.Location = new Point(471, 13);
+            pnlEmpRole.Name = "pnlEmpRole";
+            pnlEmpRole.Size = new Size(155, 50);
+            pnlEmpRole.TabIndex = 3;
+            // 
+            // txtEmpRole
+            // 
+            txtEmpRole.Location = new Point(0, 22);
+            txtEmpRole.Name = "txtEmpRole";
+            txtEmpRole.Size = new Size(150, 23);
+            txtEmpRole.TabIndex = 1;
+            // 
+            // lblEmpRole
+            // 
+            lblEmpRole.AutoSize = true;
+            lblEmpRole.Location = new Point(0, 0);
+            lblEmpRole.Margin = new Padding(3, 3, 12, 6);
+            lblEmpRole.Name = "lblEmpRole";
+            lblEmpRole.Size = new Size(33, 15);
+            lblEmpRole.TabIndex = 0;
+            lblEmpRole.Text = "Role:";
+            // 
+            // pnlEmpEmail
+            // 
+            pnlEmpEmail.Controls.Add(txtEmpEmail);
+            pnlEmpEmail.Controls.Add(lblEmpEmail);
+            pnlEmpEmail.Location = new Point(632, 13);
+            pnlEmpEmail.Name = "pnlEmpEmail";
+            pnlEmpEmail.Size = new Size(185, 50);
+            pnlEmpEmail.TabIndex = 4;
+            // 
+            // txtEmpEmail
+            // 
+            txtEmpEmail.Location = new Point(0, 22);
+            txtEmpEmail.Name = "txtEmpEmail";
+            txtEmpEmail.Size = new Size(180, 23);
+            txtEmpEmail.TabIndex = 1;
+            // 
+            // lblEmpEmail
+            // 
+            lblEmpEmail.AutoSize = true;
+            lblEmpEmail.Location = new Point(0, 0);
+            lblEmpEmail.Margin = new Padding(3, 3, 12, 6);
+            lblEmpEmail.Name = "lblEmpEmail";
+            lblEmpEmail.Size = new Size(39, 15);
+            lblEmpEmail.TabIndex = 0;
+            lblEmpEmail.Text = "Email:";
+            // 
+            // pnlEmpSearch
+            // 
+            pnlEmpSearch.Controls.Add(btnSearchEmployee);
+            pnlEmpSearch.Controls.Add(txtSearchEmployee);
+            pnlEmpSearch.Controls.Add(lblSearchEmployee);
+            pnlEmpSearch.Location = new Point(13, 69);
+            pnlEmpSearch.Name = "pnlEmpSearch";
+            pnlEmpSearch.Size = new Size(270, 50);
+            pnlEmpSearch.TabIndex = 5;
+            // 
+            // btnSearchEmployee
+            // 
+            btnSearchEmployee.Location = new Point(186, 21);
+            btnSearchEmployee.Name = "btnSearchEmployee";
+            btnSearchEmployee.Size = new Size(75, 25);
+            btnSearchEmployee.TabIndex = 2;
+            btnSearchEmployee.Text = "Search";
+            btnSearchEmployee.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchEmployee
+            // 
+            txtSearchEmployee.Location = new Point(0, 22);
+            txtSearchEmployee.Name = "txtSearchEmployee";
+            txtSearchEmployee.PlaceholderText = "Type to search...";
+            txtSearchEmployee.Size = new Size(180, 23);
+            txtSearchEmployee.TabIndex = 1;
+            txtSearchEmployee.TextChanged += txtSearchEmployee_TextChanged;
+            // 
+            // lblSearchEmployee
+            // 
+            lblSearchEmployee.AutoSize = true;
+            lblSearchEmployee.Location = new Point(0, 0);
+            lblSearchEmployee.Margin = new Padding(3, 3, 12, 6);
+            lblSearchEmployee.Name = "lblSearchEmployee";
+            lblSearchEmployee.Size = new Size(105, 15);
+            lblSearchEmployee.TabIndex = 0;
+            lblSearchEmployee.Text = "Search Employees:";
+            // 
+            // flpEmployeeButtons
+            // 
+            flpEmployeeButtons.AutoSize = true;
+            flpEmployeeButtons.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flpEmployeeButtons.Controls.Add(btnAddEmployee);
+            flpEmployeeButtons.Controls.Add(btnUpdateEmployee);
+            flpEmployeeButtons.Controls.Add(btnDeleteEmployee);
+            flpEmployeeButtons.Controls.Add(btnClearEmployee);
+            flpEmployeeButtons.Dock = DockStyle.Top;
+            flpEmployeeButtons.Location = new Point(0, 0);
+            flpEmployeeButtons.Name = "flpEmployeeButtons";
+            flpEmployeeButtons.Padding = new Padding(10, 10, 10, 5);
+            flpEmployeeButtons.Size = new Size(976, 51);
+            flpEmployeeButtons.TabIndex = 1;
+            // 
+            // btnAddEmployee
+            // 
+            btnAddEmployee.Location = new Point(13, 13);
+            btnAddEmployee.Margin = new Padding(3, 3, 8, 3);
+            btnAddEmployee.Name = "btnAddEmployee";
+            btnAddEmployee.Size = new Size(115, 30);
+            btnAddEmployee.TabIndex = 0;
+            btnAddEmployee.Text = "Add Employee";
+            btnAddEmployee.UseVisualStyleBackColor = true;
+            btnAddEmployee.Click += btnAddEmployee_Click;
+            // 
+            // btnUpdateEmployee
+            // 
+            btnUpdateEmployee.Location = new Point(139, 13);
+            btnUpdateEmployee.Margin = new Padding(3, 3, 8, 3);
+            btnUpdateEmployee.Name = "btnUpdateEmployee";
+            btnUpdateEmployee.Size = new Size(115, 30);
+            btnUpdateEmployee.TabIndex = 1;
+            btnUpdateEmployee.Text = "Update Employee";
+            btnUpdateEmployee.UseVisualStyleBackColor = true;
+            btnUpdateEmployee.Click += btnUpdateEmployee_Click;
+            // 
+            // btnDeleteEmployee
+            // 
+            btnDeleteEmployee.Location = new Point(265, 13);
+            btnDeleteEmployee.Margin = new Padding(3, 3, 8, 3);
+            btnDeleteEmployee.Name = "btnDeleteEmployee";
+            btnDeleteEmployee.Size = new Size(115, 30);
+            btnDeleteEmployee.TabIndex = 2;
+            btnDeleteEmployee.Text = "Delete Employee";
+            btnDeleteEmployee.UseVisualStyleBackColor = true;
+            btnDeleteEmployee.Click += btnDeleteEmployee_Click;
+            // 
+            // btnClearEmployee
+            // 
+            btnClearEmployee.Location = new Point(391, 13);
+            btnClearEmployee.Margin = new Padding(3, 3, 8, 3);
+            btnClearEmployee.Name = "btnClearEmployee";
+            btnClearEmployee.Size = new Size(115, 30);
+            btnClearEmployee.TabIndex = 3;
+            btnClearEmployee.Text = "Clear";
+            btnClearEmployee.UseVisualStyleBackColor = true;
+            btnClearEmployee.Click += btnClearEmployee_Click;
             // 
             // Form1
             // 
@@ -603,6 +1159,7 @@
             tabControlMain.ResumeLayout(false);
             tabJobs.ResumeLayout(false);
             tabJobs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvJobs).EndInit();
             flpJobButtons.ResumeLayout(false);
             flpJobInputs.ResumeLayout(false);
             pnlJobNum.ResumeLayout(false);
@@ -617,9 +1174,9 @@
             pnlContactName.PerformLayout();
             pnlTelephone.ResumeLayout(false);
             pnlTelephone.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvJobs).EndInit();
             tabTimecards.ResumeLayout(false);
             tabTimecards.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvTimecards).EndInit();
             flpTimecardButtons.ResumeLayout(false);
             flpTimecardInputs.ResumeLayout(false);
             pnlJobSelect.ResumeLayout(false);
@@ -631,7 +1188,37 @@
             pnlHoursWorked.ResumeLayout(false);
             pnlHoursWorked.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numHoursWorked).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvTimecards).EndInit();
+            tabClients.ResumeLayout(false);
+            tabClients.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClients).EndInit();
+            flpClientButtons.ResumeLayout(false);
+            flpClientsInputs.ResumeLayout(false);
+            flpClientsInputs.PerformLayout();
+            pnlClientCompany.ResumeLayout(false);
+            pnlClientCompany.PerformLayout();
+            pnlClientContact.ResumeLayout(false);
+            pnlClientContact.PerformLayout();
+            pnlClientPhone.ResumeLayout(false);
+            pnlClientPhone.PerformLayout();
+            pnlClientSearch.ResumeLayout(false);
+            pnlClientSearch.PerformLayout();
+            tabEmployees.ResumeLayout(false);
+            tabEmployees.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployees).EndInit();
+            flpEmployeeInputs.ResumeLayout(false);
+            pnlEmpCode.ResumeLayout(false);
+            pnlEmpCode.PerformLayout();
+            pnlEmpFirstName.ResumeLayout(false);
+            pnlEmpFirstName.PerformLayout();
+            pnlEmpLastName.ResumeLayout(false);
+            pnlEmpLastName.PerformLayout();
+            pnlEmpRole.ResumeLayout(false);
+            pnlEmpRole.PerformLayout();
+            pnlEmpEmail.ResumeLayout(false);
+            pnlEmpEmail.PerformLayout();
+            pnlEmpSearch.ResumeLayout(false);
+            pnlEmpSearch.PerformLayout();
+            flpEmployeeButtons.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -686,5 +1273,53 @@
         private Panel pnlHoursWorked;
         private Label lblHoursWorked;
         private NumericUpDown numHoursWorked;
+        private TabPage tabClients;
+        private DataGridView dgvClients;
+        private FlowLayoutPanel flpClientButtons;
+        private Button btnAddClient;
+        private Button btnUpdateClient;
+        private Button btnDeleteClient;
+        private FlowLayoutPanel flpClientsInputs;
+        private Panel pnlClientCompany;
+        private Button btnClearClient;
+        private TextBox txtClientCompany;
+        private Label lblClientCompany;
+        private Panel pnlClientContact;
+        private TextBox txtClientContact;
+        private Label lblClientContact;
+        private Panel pnlClientPhone;
+        private TextBox txtClientPhone;
+        private Label lblClientPhone;
+        private Panel pnlClientSearch;
+        private TextBox txtSearchClient;
+        private Label lblSearchClient;
+        private Button btnSearchClient;
+        private TabPage tabEmployees;
+        private DataGridView dgvEmployees;
+        private FlowLayoutPanel flpEmployeeInputs;
+        private FlowLayoutPanel flpEmployeeButtons;
+        private Panel pnlEmpCode;
+        private TextBox txtEmpCode;
+        private Label lblEmpCode;
+        private Panel pnlEmpFirstName;
+        private TextBox txtEmpFirstName;
+        private Label lblEmpFirstName;
+        private Panel pnlEmpLastName;
+        private TextBox txtEmpLastName;
+        private Label lblEmpLastName;
+        private Panel pnlEmpRole;
+        private TextBox txtEmpRole;
+        private Label lblEmpRole;
+        private Panel pnlEmpEmail;
+        private TextBox txtEmpEmail;
+        private Label lblEmpEmail;
+        private Panel pnlEmpSearch;
+        private Button btnSearchEmployee;
+        private TextBox txtSearchEmployee;
+        private Label lblSearchEmployee;
+        private Button btnAddEmployee;
+        private Button btnUpdateEmployee;
+        private Button btnDeleteEmployee;
+        private Button btnClearEmployee;
     }
 }

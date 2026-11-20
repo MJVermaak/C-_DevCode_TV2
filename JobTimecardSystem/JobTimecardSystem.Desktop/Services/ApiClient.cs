@@ -1,10 +1,11 @@
-﻿using System;
+﻿using JobTimecardSystem.Data.Models;
+using JobTimecardSystem.Data.Models.JobTimecardSystem.Data.Models;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using JobTimecardSystem.Data.Models;
 
 namespace JobTimecardSystem.Desktop.Services
 {
@@ -77,5 +78,67 @@ namespace JobTimecardSystem.Desktop.Services
             if (response.IsSuccessStatusCode) return (true, string.Empty);
             return (false, await response.Content.ReadAsStringAsync());
         }
+
+        // --- CLIENTS ---
+        public async Task<List<Client>> GetClientsAsync(string? search = null)
+        {
+            var url = string.IsNullOrWhiteSpace(search)
+                ? "api/clients"
+                : $"api/clients?search={Uri.EscapeDataString(search)}";
+            var result = await _http.GetFromJsonAsync<List<Client>>(url, _jsonOptions);
+            return result ?? new List<Client>();
+        }
+
+        public async Task<(bool Success, string Error)> CreateClientAsync(Client client)
+        {
+            var response = await _http.PostAsJsonAsync("api/clients", client);
+            if (response.IsSuccessStatusCode) return (true, string.Empty);
+            return (false, await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<(bool Success, string Error)> UpdateClientAsync(int id, Client client)
+        {
+            var response = await _http.PutAsJsonAsync($"api/clients/{id}", client);
+            if (response.IsSuccessStatusCode) return (true, string.Empty);
+            return (false, await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<(bool Success, string Error)> DeleteClientAsync(int id)
+        {
+            var response = await _http.DeleteAsync($"api/clients/{id}");
+            if (response.IsSuccessStatusCode) return (true, string.Empty);
+            return (false, await response.Content.ReadAsStringAsync());
+        }
+        // --- EMPLOYEES ---
+        public async Task<List<Employee>> GetEmployeesAsync(string? search = null)
+        {
+            var url = string.IsNullOrWhiteSpace(search)
+                ? "api/employees"
+                : $"api/employees?search={Uri.EscapeDataString(search)}";
+            var result = await _http.GetFromJsonAsync<List<Employee>>(url, _jsonOptions);
+            return result ?? new List<Employee>();
+        }
+
+        public async Task<(bool Success, string Error)> CreateEmployeeAsync(Employee employee)
+        {
+            var response = await _http.PostAsJsonAsync("api/employees", employee);
+            if (response.IsSuccessStatusCode) return (true, string.Empty);
+            return (false, await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<(bool Success, string Error)> UpdateEmployeeAsync(int id, Employee employee)
+        {
+            var response = await _http.PutAsJsonAsync($"api/employees/{id}", employee);
+            if (response.IsSuccessStatusCode) return (true, string.Empty);
+            return (false, await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<(bool Success, string Error)> DeleteEmployeeAsync(int id)
+        {
+            var response = await _http.DeleteAsync($"api/employees/{id}");
+            if (response.IsSuccessStatusCode) return (true, string.Empty);
+            return (false, await response.Content.ReadAsStringAsync());
+        }
+
     }
 }
