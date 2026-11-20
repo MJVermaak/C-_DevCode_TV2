@@ -69,7 +69,7 @@ No external database management tools are required—everything is handled insid
 ## Step 3: Configure Startup Projects & Run
 
 1. In **Solution Explorer**, right-click the top **`Solution 'JobTimecardSystem'`** node and click **Configure Startup Projects...**.
-2. Select **Multiple startup projects** and set **Action** to **Start** for all three executable projects:
+2. Select **Multiple startup projects** and confirm that all **Actions** are set to **Start** for the following:
    - **`JobTimecardSystem.WebApi`** *(runs the REST API on `http://localhost:5295`)*
    - **`JobTimecardSystem.Desktop`** *(launches the Windows Forms desktop UI)*
    - **`JobTimecardSystem.Web`** *(hosts the web client in the background on `http://localhost:5100`)*
