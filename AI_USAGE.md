@@ -20,7 +20,7 @@
 AI outputs were reviewed against the assessment specification (`CSharp Developer Code Test V2`) and modified in several key areas:
 
 - **Strict Specification Alignment on `Client` and `JobType`**: Removed an AI-introduced `Email` property from the `Client` model, FluentNHibernate mapping, repository search, API controller, Desktop form, Web client, and SQL Server table so `Client` contains strictly the three fields specified in the brief (`CompanyName`, `ContactName`, `TelephoneNumber`). Verified `JobType` remained restricted strictly to `Repair`, `Support`, and `Warranty`.
-- **WinForms Layout & Navigation Refinement**: Replaced an AI-proposed anchored `LinkLabel` overlay (which conflicted with WinForms `FlowLayoutPanel` auto-parenting) with a dedicated **Web Dashboard** button integrated cleanly into the existing action bar on all four tabs, opening `http://localhost:5100` on demand rather than auto-launching a browser on startup.
+- **WinForms Layout & Navigation Refinement**: Replaced an AI-proposed dedicated anchored **Web Dashboard** button integrated cleanly into the existing action bar on all four tabs, opening `http://localhost:5100` on demand rather than auto-launching a browser on startup.
 - **Strengthened API Validation**: Expanded `JobsController` validation to enforce all four required fields (`JobNumber`, `CompanyName`, `ContactName`, `TelephoneNumber`) rather than checking only `JobNumber` and `CompanyName`.
 - **Unit Test Alignment**: Updated controller unit tests to match the actual `IActionResult` return types and `TimecardsController(TimecardRepository, JobRepository)` constructor signature.
 
