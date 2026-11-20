@@ -15,12 +15,24 @@ namespace JobTimecardSystem.Data.Repositories
             _sessionFactory = sessionFactory;
         }
 
-        public List<Job> GetAll()
+        public List<Job> GetAll(string? search = null)
         {
             using var session = _sessionFactory.OpenSession();
-            return session.Query<Job>()
-                .OrderByDescending(j => j.JobDate)
-                .ToList();
+            var jobs = session.Query<Job>().ToList();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var term = search.Trim();
+                jobs = jobs.Where(j =>
+                    j.JobNumber.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                    j.JobType.ToString().Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                    j.CompanyName.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                    j.ContactName.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                    j.TelephoneNumber.Contains(term, StringComparison.OrdinalIgnoreCase)
+                ).ToList();
+            }
+
+            return jobs.OrderByDescending(j => j.JobDate).ThenBy(j => j.JobNumber).ToList();
         }
 
         public Job? GetById(int id)

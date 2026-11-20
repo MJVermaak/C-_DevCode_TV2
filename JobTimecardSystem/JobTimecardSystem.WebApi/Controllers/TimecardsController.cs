@@ -18,9 +18,9 @@ namespace JobTimecardSystem.WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public ActionResult<List<Timecard>> GetAll([FromQuery] string? search = null)
         {
-            return Ok(_timecardRepo.GetAll());
+            return Ok(_timecardRepo.GetAll(search));
         }
 
         [HttpGet("{id:int}")]

@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JobTimecardSystem.Data\JobTimecardSystem.Data.csproj" />
-    <ProjectReference Include="..\JobTimecardSystem.Tests\JobTimecardSystem.Tests.csproj" />
   </ItemGroup>
 
 </Project>

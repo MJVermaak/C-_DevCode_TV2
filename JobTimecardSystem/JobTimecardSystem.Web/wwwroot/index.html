@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job &amp; Timecard Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <div>
+                <h1>Job &amp; Timecard Management System</h1>
+                <p class="subtitle">Web Client &bull; Connected to ASP.NET Core Web API</p>
+            </div>
+            <div id="apiStatus" class="status-badge status-checking">Connecting to API...</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="kpi-grid">
+            <div class="kpi-card">
+                <span class="kpi-label">Total Jobs</span>
+                <strong id="kpiJobs" class="kpi-value">0</strong>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Total Timecards</span>
+                <strong id="kpiTimecards" class="kpi-value">0</strong>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Total Hours Logged</span>
+                <strong id="kpiHours" class="kpi-value">0.00</strong>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-label">Clients / Employees</span>
+                <strong id="kpiPeople" class="kpi-value">0 / 0</strong>
+            </div>
+        </section>
+
+        <div id="alertBox" class="alert hidden" role="alert"></div>
+
+        <nav class="tabs" role="tablist">
+            <button class="tab-btn active" data-tab="jobsTab">Jobs</button>
+            <button class="tab-btn" data-tab="timecardsTab">Timecards</button>
+            <button class="tab-btn" data-tab="clientsTab">Clients</button>
+            <button class="tab-btn" data-tab="employeesTab">Employees</button>
+        </nav>
+
+        <!-- TAB 1: JOBS -->
+        <section id="jobsTab" class="tab-panel active">
+            <div class="card">
+                <h2>Manage Job</h2>
+                <form id="jobForm" class="form-grid" novalidate>
+                    <input type="hidden" id="jobId" />
+                    <div class="field">
+                        <label for="jobNumber">Job Number *</label>
+                        <input type="text" id="jobNumber" placeholder="e.g. JOB-101" required />
+                    </div>
+                    <div class="field">
+                        <label for="jobType">Job Type *</label>
+                        <select id="jobType">
+                            <option value="Repair">Repair</option>
+                            <option value="Support">Support</option>
+                            <option value="Warranty">Warranty</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="jobDate">Job Date *</label>
+                        <input type="date" id="jobDate" required />
+                    </div>
+                    <div class="field">
+                        <label for="jobCompany">Company Name *</label>
+                        <input type="text" id="jobCompany" placeholder="Client company name" required />
+                    </div>
+                    <div class="field">
+                        <label for="jobContact">Contact Name *</label>
+                        <input type="text" id="jobContact" placeholder="Primary contact person" required />
+                    </div>
+                    <div class="field">
+                        <label for="jobPhone">Telephone Number *</label>
+                        <input type="tel" id="jobPhone" placeholder="e.g. 012 345 6789" required />
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="btnSaveJob" class="btn btn-primary">Add Job</button>
+                        <button type="button" id="btnClearJob" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="table-header">
+                    <h2>Jobs List</h2>
+                    <input type="search" id="searchJobs" class="search-input" placeholder="Search jobs by number, type, company, contact..." />
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Job Number</th>
+                                <th>Job Type</th>
+                                <th>Job Date</th>
+                                <th>Company Name</th>
+                                <th>Contact Name</th>
+                                <th>Telephone</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="jobsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: TIMECARDS -->
+        <section id="timecardsTab" class="tab-panel">
+            <div class="card">
+                <h2>Log Timecard</h2>
+                <form id="timecardForm" class="form-grid" novalidate>
+                    <input type="hidden" id="timecardId" />
+                    <div class="field">
+                        <label for="tcJobId">Associated Job *</label>
+                        <select id="tcJobId"></select>
+                    </div>
+                    <div class="field">
+                        <label for="tcEmployee">Employee *</label>
+                        <input type="text" id="tcEmployee" placeholder="Employee full name" required />
+                    </div>
+                    <div class="field">
+                        <label for="tcDate">Date Worked *</label>
+                        <input type="date" id="tcDate" required />
+                    </div>
+                    <div class="field">
+                        <label for="tcHours">Hours Worked (0.1 – 24) *</label>
+                        <input type="number" id="tcHours" step="0.5" min="0.1" max="24" placeholder="e.g. 7.5" required />
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="btnSaveTimecard" class="btn btn-primary">Add Timecard</button>
+                        <button type="button" id="btnClearTimecard" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="table-header">
+                    <h2>Timecards List</h2>
+                    <input type="search" id="searchTimecards" class="search-input" placeholder="Search timecards by employee, job number, company..." />
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Job Number</th>
+                                <th>Company</th>
+                                <th>Employee</th>
+                                <th>Date Worked</th>
+                                <th>Hours Worked</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="timecardsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: CLIENTS -->
+        <section id="clientsTab" class="tab-panel">
+            <div class="card">
+                <h2>Manage Client</h2>
+                <form id="clientForm" class="form-grid" novalidate>
+                    <input type="hidden" id="clientId" />
+                    <div class="field">
+                        <label for="clientCompany">Company Name *</label>
+                        <input type="text" id="clientCompany" placeholder="Company name" required />
+                    </div>
+                    <div class="field">
+                        <label for="clientContact">Contact Name *</label>
+                        <input type="text" id="clientContact" placeholder="Contact person" required />
+                    </div>
+                    <div class="field">
+                        <label for="clientPhone">Telephone Number *</label>
+                        <input type="tel" id="clientPhone" placeholder="e.g. 012 345 6789" required />
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="btnSaveClient" class="btn btn-primary">Add Client</button>
+                        <button type="button" id="btnClearClient" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="table-header">
+                    <h2>Clients List</h2>
+                    <input type="search" id="searchClients" class="search-input" placeholder="Search clients by company, contact, phone..." />
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Company Name</th>
+                                <th>Contact Name</th>
+                                <th>Telephone Number</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: EMPLOYEES -->
+        <section id="employeesTab" class="tab-panel">
+            <div class="card">
+                <h2>Manage Employee</h2>
+                <form id="employeeForm" class="form-grid" novalidate>
+                    <input type="hidden" id="employeeId" />
+                    <div class="field">
+                        <label for="empCode">Employee Code *</label>
+                        <input type="text" id="empCode" placeholder="e.g. EMP-01" required />
+                    </div>
+                    <div class="field">
+                        <label for="empFirstName">First Name *</label>
+                        <input type="text" id="empFirstName" placeholder="First name" required />
+                    </div>
+                    <div class="field">
+                        <label for="empLastName">Last Name *</label>
+                        <input type="text" id="empLastName" placeholder="Last name" required />
+                    </div>
+                    <div class="field">
+                        <label for="empRole">Role *</label>
+                        <input type="text" id="empRole" placeholder="e.g. Field Technician" required />
+                    </div>
+                    <div class="field">
+                        <label for="empEmail">Email</label>
+                        <input type="email" id="empEmail" placeholder="optional@company.co.za" />
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="btnSaveEmployee" class="btn btn-primary">Add Employee</button>
+                        <button type="button" id="btnClearEmployee" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="table-header">
+                    <h2>Employees List</h2>
+                    <input type="search" id="searchEmployees" class="search-input" placeholder="Search employees by code, name, role..." />
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Code</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Role</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employeesTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

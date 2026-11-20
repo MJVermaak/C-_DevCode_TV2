@@ -56,6 +56,10 @@
             pnlTelephone = new Panel();
             txtTelephone = new TextBox();
             lblTelephone = new Label();
+            pnlJobSearch = new Panel();
+            btnSearchJob = new Button();
+            txtSearchJob = new TextBox();
+            lblSearchJob = new Label();
             tabTimecards = new TabPage();
             dgvTimecards = new DataGridView();
             flpTimecardButtons = new FlowLayoutPanel();
@@ -77,6 +81,10 @@
             pnlHoursWorked = new Panel();
             numHoursWorked = new NumericUpDown();
             lblHoursWorked = new Label();
+            pnlTimecardSearch = new Panel();
+            btnSearchTimecard = new Button();
+            txtSearchTimecard = new TextBox();
+            lblSearchTimecard = new Label();
             tabClients = new TabPage();
             dgvClients = new DataGridView();
             flpClientButtons = new FlowLayoutPanel();
@@ -125,6 +133,10 @@
             btnUpdateEmployee = new Button();
             btnDeleteEmployee = new Button();
             btnClearEmployee = new Button();
+            btnOpenWeb = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             tabControlMain.SuspendLayout();
             tabJobs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvJobs).BeginInit();
@@ -136,6 +148,7 @@
             pnlCompanyName.SuspendLayout();
             pnlContactName.SuspendLayout();
             pnlTelephone.SuspendLayout();
+            pnlJobSearch.SuspendLayout();
             tabTimecards.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTimecards).BeginInit();
             flpTimecardButtons.SuspendLayout();
@@ -145,6 +158,7 @@
             pnlDateWorked.SuspendLayout();
             pnlHoursWorked.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numHoursWorked).BeginInit();
+            pnlTimecardSearch.SuspendLayout();
             tabClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
             flpClientButtons.SuspendLayout();
@@ -216,6 +230,7 @@
             flpJobButtons.Controls.Add(btnDeleteJob);
             flpJobButtons.Controls.Add(btnClearJob);
             flpJobButtons.Controls.Add(btnRefreshJob);
+            flpJobButtons.Controls.Add(btnOpenWeb);
             flpJobButtons.Dock = DockStyle.Top;
             flpJobButtons.Location = new Point(3, 137);
             flpJobButtons.Name = "flpJobButtons";
@@ -278,6 +293,7 @@
             flpJobInputs.Controls.Add(pnlCompanyName);
             flpJobInputs.Controls.Add(pnlContactName);
             flpJobInputs.Controls.Add(pnlTelephone);
+            flpJobInputs.Controls.Add(pnlJobSearch);
             flpJobInputs.Dock = DockStyle.Top;
             flpJobInputs.Location = new Point(3, 3);
             flpJobInputs.Name = "flpJobInputs";
@@ -443,6 +459,43 @@
             lblTelephone.TabIndex = 0;
             lblTelephone.Text = "Telephone";
             // 
+            // pnlJobSearch
+            // 
+            pnlJobSearch.Controls.Add(btnSearchJob);
+            pnlJobSearch.Controls.Add(txtSearchJob);
+            pnlJobSearch.Controls.Add(lblSearchJob);
+            pnlJobSearch.Location = new Point(485, 73);
+            pnlJobSearch.Margin = new Padding(3, 3, 12, 6);
+            pnlJobSearch.Name = "pnlJobSearch";
+            pnlJobSearch.Size = new Size(270, 50);
+            pnlJobSearch.TabIndex = 6;
+            // 
+            // btnSearchJob
+            // 
+            btnSearchJob.Location = new Point(186, 21);
+            btnSearchJob.Name = "btnSearchJob";
+            btnSearchJob.Size = new Size(75, 25);
+            btnSearchJob.TabIndex = 2;
+            btnSearchJob.Text = "Search";
+            btnSearchJob.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchJob
+            // 
+            txtSearchJob.Location = new Point(0, 22);
+            txtSearchJob.Name = "txtSearchJob";
+            txtSearchJob.PlaceholderText = "Type to search...";
+            txtSearchJob.Size = new Size(180, 23);
+            txtSearchJob.TabIndex = 1;
+            // 
+            // lblSearchJob
+            // 
+            lblSearchJob.AutoSize = true;
+            lblSearchJob.Location = new Point(0, 0);
+            lblSearchJob.Name = "lblSearchJob";
+            lblSearchJob.Size = new Size(71, 15);
+            lblSearchJob.TabIndex = 0;
+            lblSearchJob.Text = "Search Jobs:";
+            // 
             // tabTimecards
             // 
             tabTimecards.Controls.Add(dgvTimecards);
@@ -480,6 +533,7 @@
             flpTimecardButtons.Controls.Add(btnDeleteTimecard);
             flpTimecardButtons.Controls.Add(btnClearTimecard);
             flpTimecardButtons.Controls.Add(btnRefreshTimecard);
+            flpTimecardButtons.Controls.Add(button1);
             flpTimecardButtons.Dock = DockStyle.Top;
             flpTimecardButtons.Location = new Point(3, 137);
             flpTimecardButtons.Name = "flpTimecardButtons";
@@ -540,6 +594,7 @@
             flpTimecardInputs.Controls.Add(pnlEmployee);
             flpTimecardInputs.Controls.Add(pnlDateWorked);
             flpTimecardInputs.Controls.Add(pnlHoursWorked);
+            flpTimecardInputs.Controls.Add(pnlTimecardSearch);
             flpTimecardInputs.Dock = DockStyle.Top;
             flpTimecardInputs.Location = new Point(3, 3);
             flpTimecardInputs.Name = "flpTimecardInputs";
@@ -657,6 +712,43 @@
             lblHoursWorked.TabIndex = 0;
             lblHoursWorked.Text = "Hours Worked:";
             // 
+            // pnlTimecardSearch
+            // 
+            pnlTimecardSearch.Controls.Add(btnSearchTimecard);
+            pnlTimecardSearch.Controls.Add(txtSearchTimecard);
+            pnlTimecardSearch.Controls.Add(lblSearchTimecard);
+            pnlTimecardSearch.Location = new Point(249, 73);
+            pnlTimecardSearch.Margin = new Padding(3, 3, 12, 6);
+            pnlTimecardSearch.Name = "pnlTimecardSearch";
+            pnlTimecardSearch.Size = new Size(270, 50);
+            pnlTimecardSearch.TabIndex = 7;
+            // 
+            // btnSearchTimecard
+            // 
+            btnSearchTimecard.Location = new Point(186, 21);
+            btnSearchTimecard.Name = "btnSearchTimecard";
+            btnSearchTimecard.Size = new Size(75, 25);
+            btnSearchTimecard.TabIndex = 2;
+            btnSearchTimecard.Text = "Search";
+            btnSearchTimecard.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchTimecard
+            // 
+            txtSearchTimecard.Location = new Point(0, 22);
+            txtSearchTimecard.Name = "txtSearchTimecard";
+            txtSearchTimecard.PlaceholderText = "Type to search...";
+            txtSearchTimecard.Size = new Size(180, 23);
+            txtSearchTimecard.TabIndex = 1;
+            // 
+            // lblSearchTimecard
+            // 
+            lblSearchTimecard.AutoSize = true;
+            lblSearchTimecard.Location = new Point(0, 0);
+            lblSearchTimecard.Name = "lblSearchTimecard";
+            lblSearchTimecard.Size = new Size(103, 15);
+            lblSearchTimecard.TabIndex = 0;
+            lblSearchTimecard.Text = "Search Timecards:";
+            // 
             // tabClients
             // 
             tabClients.Controls.Add(dgvClients);
@@ -676,11 +768,11 @@
             dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClients.Dock = DockStyle.Fill;
-            dgvClients.Location = new Point(0, 120);
+            dgvClients.Location = new Point(0, 122);
             dgvClients.Name = "dgvClients";
             dgvClients.ReadOnly = true;
             dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClients.Size = new Size(976, 493);
+            dgvClients.Size = new Size(976, 491);
             dgvClients.TabIndex = 0;
             dgvClients.CellClick += dgvClients_CellClick;
             // 
@@ -691,11 +783,12 @@
             flpClientButtons.Controls.Add(btnUpdateClient);
             flpClientButtons.Controls.Add(btnDeleteClient);
             flpClientButtons.Controls.Add(btnClearClient);
+            flpClientButtons.Controls.Add(button2);
             flpClientButtons.Dock = DockStyle.Top;
             flpClientButtons.Location = new Point(0, 74);
             flpClientButtons.Name = "flpClientButtons";
             flpClientButtons.Padding = new Padding(10, 0, 10, 10);
-            flpClientButtons.Size = new Size(976, 46);
+            flpClientButtons.Size = new Size(976, 48);
             flpClientButtons.TabIndex = 1;
             // 
             // btnAddClient
@@ -877,8 +970,8 @@
             // tabEmployees
             // 
             tabEmployees.Controls.Add(dgvEmployees);
-            tabEmployees.Controls.Add(flpEmployeeInputs);
             tabEmployees.Controls.Add(flpEmployeeButtons);
+            tabEmployees.Controls.Add(flpEmployeeInputs);
             tabEmployees.Location = new Point(4, 24);
             tabEmployees.Name = "tabEmployees";
             tabEmployees.Size = new Size(976, 613);
@@ -893,11 +986,11 @@
             dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployees.Dock = DockStyle.Fill;
-            dgvEmployees.Location = new Point(0, 178);
+            dgvEmployees.Location = new Point(0, 180);
             dgvEmployees.Name = "dgvEmployees";
             dgvEmployees.ReadOnly = true;
             dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEmployees.Size = new Size(976, 435);
+            dgvEmployees.Size = new Size(976, 433);
             dgvEmployees.TabIndex = 0;
             dgvEmployees.CellClick += dgvEmployees_CellClick;
             // 
@@ -912,7 +1005,7 @@
             flpEmployeeInputs.Controls.Add(pnlEmpEmail);
             flpEmployeeInputs.Controls.Add(pnlEmpSearch);
             flpEmployeeInputs.Dock = DockStyle.Top;
-            flpEmployeeInputs.Location = new Point(0, 51);
+            flpEmployeeInputs.Location = new Point(0, 0);
             flpEmployeeInputs.Name = "flpEmployeeInputs";
             flpEmployeeInputs.Padding = new Padding(10, 10, 10, 5);
             flpEmployeeInputs.Size = new Size(976, 127);
@@ -1094,11 +1187,12 @@
             flpEmployeeButtons.Controls.Add(btnUpdateEmployee);
             flpEmployeeButtons.Controls.Add(btnDeleteEmployee);
             flpEmployeeButtons.Controls.Add(btnClearEmployee);
+            flpEmployeeButtons.Controls.Add(button3);
             flpEmployeeButtons.Dock = DockStyle.Top;
-            flpEmployeeButtons.Location = new Point(0, 0);
+            flpEmployeeButtons.Location = new Point(0, 127);
             flpEmployeeButtons.Name = "flpEmployeeButtons";
             flpEmployeeButtons.Padding = new Padding(10, 10, 10, 5);
-            flpEmployeeButtons.Size = new Size(976, 51);
+            flpEmployeeButtons.Size = new Size(976, 53);
             flpEmployeeButtons.TabIndex = 1;
             // 
             // btnAddEmployee
@@ -1145,6 +1239,42 @@
             btnClearEmployee.UseVisualStyleBackColor = true;
             btnClearEmployee.Click += btnClearEmployee_Click;
             // 
+            // btnOpenWeb
+            // 
+            btnOpenWeb.Location = new Point(618, 9);
+            btnOpenWeb.Name = "btnOpenWeb";
+            btnOpenWeb.Size = new Size(125, 32);
+            btnOpenWeb.TabIndex = 5;
+            btnOpenWeb.Text = "Web Dashboard";
+            btnOpenWeb.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(668, 9);
+            button1.Name = "button1";
+            button1.Size = new Size(125, 32);
+            button1.TabIndex = 6;
+            button1.Text = "Web Dashboard";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(457, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(125, 32);
+            button2.TabIndex = 6;
+            button2.Text = "Web Dashboard";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(517, 13);
+            button3.Name = "button3";
+            button3.Size = new Size(125, 32);
+            button3.TabIndex = 6;
+            button3.Text = "Web Dashboard";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -1174,6 +1304,8 @@
             pnlContactName.PerformLayout();
             pnlTelephone.ResumeLayout(false);
             pnlTelephone.PerformLayout();
+            pnlJobSearch.ResumeLayout(false);
+            pnlJobSearch.PerformLayout();
             tabTimecards.ResumeLayout(false);
             tabTimecards.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTimecards).EndInit();
@@ -1188,6 +1320,8 @@
             pnlHoursWorked.ResumeLayout(false);
             pnlHoursWorked.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numHoursWorked).EndInit();
+            pnlTimecardSearch.ResumeLayout(false);
+            pnlTimecardSearch.PerformLayout();
             tabClients.ResumeLayout(false);
             tabClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClients).EndInit();
@@ -1321,5 +1455,17 @@
         private Button btnUpdateEmployee;
         private Button btnDeleteEmployee;
         private Button btnClearEmployee;
+        private Panel pnlJobSearch;
+        private Button btnSearchJob;
+        private TextBox txtSearchJob;
+        private Label lblSearchJob;
+        private Panel pnlTimecardSearch;
+        private Button btnSearchTimecard;
+        private TextBox txtSearchTimecard;
+        private Label lblSearchTimecard;
+        private Button btnOpenWeb;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

@@ -3,7 +3,7 @@ using JobTimecardSystem.Data.Models.JobTimecardSystem.Data.Models;
 using JobTimecardSystem.Desktop.Services;
 using System.Globalization;
 using System.Net.Mail;
-
+using System.Diagnostics;
 using System.Net.Mail;
 using JobTimecardSystem.Data.Models;
 using JobTimecardSystem.Desktop.Services;
@@ -94,6 +94,19 @@ namespace JobTimecardSystem.Desktop
             btnClearEmployee.Click += btnClearEmployee_Click;
             btnSearchEmployee.Click -= btnSearchEmployee_Click;
             btnSearchEmployee.Click += btnSearchEmployee_Click;
+
+            txtSearchJob.TextChanged -= txtSearchJob_TextChanged;
+            txtSearchJob.TextChanged += txtSearchJob_TextChanged;
+            btnSearchJob.Click -= btnSearchJob_Click;
+            btnSearchJob.Click += btnSearchJob_Click;
+
+            txtSearchTimecard.TextChanged -= txtSearchTimecard_TextChanged;
+            txtSearchTimecard.TextChanged += txtSearchTimecard_TextChanged;
+            btnSearchTimecard.Click -= btnSearchTimecard_Click;
+            btnSearchTimecard.Click += btnSearchTimecard_Click;
+
+            //5. Connecting Web based application on click
+            HookButtonByText(this, "Web Dashboard", btnOpenWeb_Click);
         }
 
         private static void HookButtonByText(Control parent, string buttonTextPrefix, EventHandler handler)
@@ -109,6 +122,20 @@ namespace JobTimecardSystem.Desktop
                 {
                     HookButtonByText(c, buttonTextPrefix, handler);
                 }
+            }
+        }
+        private void btnOpenWeb_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo("http://localhost:5100")
+                {
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                ShowRuntimeWarning("opening the Web Dashboard", ex);
             }
         }
 
@@ -146,6 +173,7 @@ namespace JobTimecardSystem.Desktop
                         await RefreshJobsAndTimecardsAsync();
                         await RefreshClientsAsync();
                         await RefreshEmployeesAsync();
+
                         return;
                     }
                     catch (HttpRequestException) when (attempt < 15)
@@ -166,13 +194,14 @@ namespace JobTimecardSystem.Desktop
 
         private async Task RefreshJobsAndTimecardsAsync()
         {
-            var jobs = await _api.GetJobsAsync();
+            var allJobs = await _api.GetJobsAsync();
+            var filteredJobs = await _api.GetJobsAsync(txtSearchJob.Text);
 
             dgvJobs.AutoGenerateColumns = true;
             dgvJobs.DataSource = null;
-            dgvJobs.DataSource = jobs;
+            dgvJobs.DataSource = filteredJobs;
 
-            cmbJobSelect.DataSource = jobs
+            cmbJobSelect.DataSource = allJobs
                 .Select(j => new JobDropdownItem
                 {
                     Id = j.Id,
@@ -182,7 +211,7 @@ namespace JobTimecardSystem.Desktop
             cmbJobSelect.DisplayMember = nameof(JobDropdownItem.Display);
             cmbJobSelect.ValueMember = nameof(JobDropdownItem.Id);
 
-            var timecards = await _api.GetTimecardsAsync();
+            var timecards = await _api.GetTimecardsAsync(txtSearchTimecard.Text);
 
             dgvTimecards.AutoGenerateColumns = true;
             dgvTimecards.DataSource = null;
@@ -948,6 +977,53 @@ namespace JobTimecardSystem.Desktop
 
             return true;
         }
+        private async void btnSearchJob_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                await RefreshJobsAndTimecardsAsync();
+            }
+            catch (Exception ex)
+            {
+                ShowRuntimeWarning("searching jobs", ex);
+            }
+        }
+
+        private async void txtSearchJob_TextChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                await RefreshJobsAndTimecardsAsync();
+            }
+            catch (Exception ex)
+            {
+                ShowRuntimeWarning("filtering jobs", ex);
+            }
+        }
+
+        private async void btnSearchTimecard_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                await RefreshJobsAndTimecardsAsync();
+            }
+            catch (Exception ex)
+            {
+                ShowRuntimeWarning("searching timecards", ex);
+            }
+        }
+
+        private async void txtSearchTimecard_TextChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                await RefreshJobsAndTimecardsAsync();
+            }
+            catch (Exception ex)
+            {
+                ShowRuntimeWarning("filtering timecards", ex);
+            }
+        }
     }
 
     public class JobDropdownItem
@@ -966,5 +1042,6 @@ namespace JobTimecardSystem.Desktop
         public string DateWorked { get; set; } = string.Empty;
         public decimal HoursWorked { get; set; }
     }
+
 }
 

@@ -2,5 +2,6 @@
   <Project Path="JobTimecardSystem.Data/JobTimecardSystem.Data.csproj" />
   <Project Path="JobTimecardSystem.Desktop/JobTimecardSystem.Desktop.csproj" />
   <Project Path="JobTimecardSystem.Tests/JobTimecardSystem.Tests.csproj" />
+  <Project Path="JobTimecardSystem.Web/JobTimecardSystem.Web.csproj" Id="91701e8d-cb62-4a9a-9d9c-1425ad8d65b7" />
   <Project Path="JobTimecardSystem.WebApi/JobTimecardSystem.WebApi.csproj" />
 </Solution>

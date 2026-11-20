@@ -16,9 +16,9 @@ namespace JobTimecardSystem.WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public ActionResult<List<Job>> GetAll([FromQuery] string? search = null)
         {
-            return Ok(_repo.GetAll());
+            return Ok(_repo.GetAll(search));
         }
 
         [HttpGet("{id:int}")]
@@ -31,8 +31,13 @@ namespace JobTimecardSystem.WebApi.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] Job job)
         {
-            if (string.IsNullOrWhiteSpace(job.JobNumber) || string.IsNullOrWhiteSpace(job.CompanyName))
-                return BadRequest("Job Number and Company Name are required.");
+            if (string.IsNullOrWhiteSpace(job.JobNumber) ||
+    string.IsNullOrWhiteSpace(job.CompanyName) ||
+    string.IsNullOrWhiteSpace(job.ContactName) ||
+    string.IsNullOrWhiteSpace(job.TelephoneNumber))
+            {
+                return BadRequest("Job Number, Company Name, Contact Name, and Telephone Number are required.");
+            }
 
             _repo.Add(job);
             return CreatedAtAction(nameof(GetById), new { id = job.Id }, job);
@@ -42,11 +47,13 @@ namespace JobTimecardSystem.WebApi.Controllers
         public IActionResult Update(int id, [FromBody] Job job)
         {
             var existing = _repo.GetById(id);
-            if (existing is null)
-                return NotFound($"Job with ID {id} not found.");
-
-            if (string.IsNullOrWhiteSpace(job.JobNumber) || string.IsNullOrWhiteSpace(job.CompanyName))
-                return BadRequest("Job Number and Company Name are required.");
+            if (string.IsNullOrWhiteSpace(job.JobNumber) ||
+    string.IsNullOrWhiteSpace(job.CompanyName) ||
+    string.IsNullOrWhiteSpace(job.ContactName) ||
+    string.IsNullOrWhiteSpace(job.TelephoneNumber))
+            {
+                return BadRequest("Job Number, Company Name, Contact Name, and Telephone Number are required.");
+            }
 
             job.Id = id;
             _repo.Update(job);

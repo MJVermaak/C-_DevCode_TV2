@@ -9,6 +9,10 @@
       {
         "Path": "JobTimecardSystem.Desktop\\JobTimecardSystem.Desktop.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "JobTimecardSystem.Web\\JobTimecardSystem.Web.csproj",
+        "Action": "Start"
       }
     ]
   }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using JobTimecardSystem.Data.Models;
 using NHibernate;
+using NHibernate.Linq;
 
 namespace JobTimecardSystem.Data.Repositories
 {
@@ -15,12 +16,24 @@ namespace JobTimecardSystem.Data.Repositories
             _sessionFactory = sessionFactory;
         }
 
-        public List<Timecard> GetAll()
+        public List<Timecard> GetAll(string? search = null)
         {
             using var session = _sessionFactory.OpenSession();
-            return session.Query<Timecard>()
-                .OrderByDescending(t => t.DateWorked)
+            var timecards = session.Query<Timecard>()
+                .Fetch(t => t.Job)
                 .ToList();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var term = search.Trim();
+                timecards = timecards.Where(t =>
+                    t.Employee.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                    (t.Job != null && t.Job.JobNumber.Contains(term, StringComparison.OrdinalIgnoreCase)) ||
+                    (t.Job != null && t.Job.CompanyName.Contains(term, StringComparison.OrdinalIgnoreCase))
+                ).ToList();
+            }
+
+            return timecards.OrderByDescending(t => t.DateWorked).ToList();
         }
         public Timecard? GetById(int id)
         {

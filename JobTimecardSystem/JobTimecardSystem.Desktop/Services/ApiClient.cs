@@ -24,9 +24,12 @@ namespace JobTimecardSystem.Desktop.Services
         }
 
         // --- JOBS ---
-        public async Task<List<Job>> GetJobsAsync()
+        public async Task<List<Job>> GetJobsAsync(string? search = null)
         {
-            var result = await _http.GetFromJsonAsync<List<Job>>("api/jobs", _jsonOptions);
+            var url = string.IsNullOrWhiteSpace(search)
+                ? "api/jobs"
+                : $"api/jobs?search={Uri.EscapeDataString(search)}";
+            var result = await _http.GetFromJsonAsync<List<Job>>(url, _jsonOptions);
             return result ?? new List<Job>();
         }
 
@@ -52,9 +55,12 @@ namespace JobTimecardSystem.Desktop.Services
         }
 
         // --- TIMECARDS ---
-        public async Task<List<Timecard>> GetTimecardsAsync()
+        public async Task<List<Timecard>> GetTimecardsAsync(string? search = null)
         {
-            var result = await _http.GetFromJsonAsync<List<Timecard>>("api/timecards", _jsonOptions);
+            var url = string.IsNullOrWhiteSpace(search)
+                ? "api/timecards"
+                : $"api/timecards?search={Uri.EscapeDataString(search)}";
+            var result = await _http.GetFromJsonAsync<List<Timecard>>(url, _jsonOptions);
             return result ?? new List<Timecard>();
         }
 
