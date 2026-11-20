@@ -41,36 +41,48 @@ namespace JobTimecardSystem.Desktop
         {
             try
             {
-                var jobs = await _api.GetJobsAsync();
-
-                dgvJobs.AutoGenerateColumns = true;
-                dgvJobs.DataSource = null;
-                dgvJobs.DataSource = jobs;
-
-                cmbJobSelect.DataSource = jobs
-                    .Select(j => new JobDropdownItem
-                    {
-                        Id = j.Id,
-                        Display = $"{j.JobNumber} - {j.CompanyName} ({j.JobType})"
-                    })
-                    .ToList();
-                cmbJobSelect.DisplayMember = nameof(JobDropdownItem.Display);
-                cmbJobSelect.ValueMember = nameof(JobDropdownItem.Id);
-
-                var timecards = await _api.GetTimecardsAsync();
-
-                dgvTimecards.AutoGenerateColumns = true;
-                dgvTimecards.DataSource = null;
-                dgvTimecards.DataSource = timecards.Select(t => new TimecardGridRow
+                for (int attempt = 1; attempt <= 6; attempt++)
                 {
-                    Id = t.Id,
-                    JobId = t.JobId,
-                    JobNumber = t.Job?.JobNumber ?? $"Job #{t.JobId}",
-                    Company = t.Job?.CompanyName ?? "",
-                    Employee = t.Employee,
-                    DateWorked = t.DateWorked.ToShortDateString(),
-                    HoursWorked = t.HoursWorked
-                }).ToList();
+                    try
+                    {
+                        var jobs = await _api.GetJobsAsync();
+
+                        dgvJobs.AutoGenerateColumns = true;
+                        dgvJobs.DataSource = null;
+                        dgvJobs.DataSource = jobs;
+
+                        cmbJobSelect.DataSource = jobs
+                            .Select(j => new JobDropdownItem
+                            {
+                                Id = j.Id,
+                                Display = $"{j.JobNumber} - {j.CompanyName} ({j.JobType})"
+                            })
+                            .ToList();
+                        cmbJobSelect.DisplayMember = nameof(JobDropdownItem.Display);
+                        cmbJobSelect.ValueMember = nameof(JobDropdownItem.Id);
+
+                        var timecards = await _api.GetTimecardsAsync();
+
+                        dgvTimecards.AutoGenerateColumns = true;
+                        dgvTimecards.DataSource = null;
+                        dgvTimecards.DataSource = timecards.Select(t => new TimecardGridRow
+                        {
+                            Id = t.Id,
+                            JobId = t.JobId,
+                            JobNumber = t.Job?.JobNumber ?? $"Job #{t.JobId}",
+                            Company = t.Job?.CompanyName ?? "",
+                            Employee = t.Employee,
+                            DateWorked = t.DateWorked.ToShortDateString(),
+                            HoursWorked = t.HoursWorked
+                        }).ToList();
+
+                        return;
+                    }
+                    catch (HttpRequestException) when (attempt < 6)
+                    {
+                        await Task.Delay(500);
+                    }
+                }
             }
             catch (Exception ex)
             {
